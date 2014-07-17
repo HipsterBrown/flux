@@ -1,4 +1,4 @@
-define(['underscore', 'dispatcher'], function(_, Dispatcher) {
+define(['underscore', '../dispatcher'], function(_, Dispatcher) {
   var StoreMixin;
   return StoreMixin = {
     _setUpStores: function() {
