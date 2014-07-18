@@ -1,4 +1,4 @@
-define(['rsvp'], function(rsvp) {
+define(['./lib/rsvp.amd'], function(rsvp) {
   var Dispatcher, Promise;
   Promise = rsvp.Promise;
   Dispatcher = (function() {

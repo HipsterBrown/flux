@@ -1,4 +1,5 @@
 define ['underscore', '../dispatcher'], (_, Dispatcher) ->
+
   StoreMixin = {
     _setUpStores: ->
       @_storeMap = {}

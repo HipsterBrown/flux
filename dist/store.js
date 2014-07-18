@@ -1,6 +1,6 @@
 var __slice = [].slice;
 
-define(['eventEmitter'], function(EventEmitter) {
+define(['./lib/EventEmitter'], function(EventEmitter) {
   var Store;
   return Store = (function() {
     function Store() {

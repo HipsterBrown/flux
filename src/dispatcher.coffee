@@ -1,5 +1,7 @@
-define ['rsvp'], (rsvp) ->
+define ['./lib/rsvp.amd'], (rsvp) ->
+
   Promise = rsvp.Promise
+
   # Based on https://github.com/yahoo/dispatchr
   class Dispatcher
     stores: {}

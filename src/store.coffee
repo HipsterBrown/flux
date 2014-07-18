@@ -1,4 +1,4 @@
-define ['eventEmitter'], (EventEmitter) ->
+define ['./lib/EventEmitter'], (EventEmitter) ->
 
   class Store
     constructor: ->
