@@ -1,0 +1,26 @@
+{
+  "name": "flux",
+  "version": "0.2.2",
+  "homepage": "https://github.com/namely/flux",
+  "authors": [
+    "Namely Devs <fred@namely.com>"
+  ],
+  "description": "ReactJS flux files for Namely",
+  "keywords": [
+    "reactjs",
+    "flux"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rsvp": "~3.0.8",
+    "event-emitter": "~0.1.0"
+  }
+}
