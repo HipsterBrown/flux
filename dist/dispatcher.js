@@ -1,5 +1,6 @@
-define(['./lib/rsvp.amd'], function(rsvp) {
-  var Dispatcher, Promise;
+define(['require', './lib/rsvp.amd'], function(require) {
+  var Dispatcher, Promise, rsvp;
+  rsvp = require('./lib/rsvp.amd');
   Promise = rsvp.Promise;
   Dispatcher = (function() {
     function Dispatcher() {}

@@ -1,4 +1,6 @@
-define ['./lib/rsvp.amd'], (rsvp) ->
+define ['require', './lib/rsvp.amd'], (require) ->
+
+  rsvp = require('./lib/rsvp.amd')
 
   Promise = rsvp.Promise
 

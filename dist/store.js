@@ -1,7 +1,8 @@
 var __slice = [].slice;
 
-define(['./lib/EventEmitter'], function(EventEmitter) {
-  var Store;
+define(['require', './lib/EventEmitter'], function(require) {
+  var EventEmitter, Store;
+  EventEmitter = require('./lib/EventEmitter');
   return Store = (function() {
     function Store() {
       this.events = {};
