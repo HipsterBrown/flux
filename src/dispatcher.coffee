@@ -1,6 +1,8 @@
-define ['require', './lib/rsvp.amd'], (require) ->
+define ['rsvp'], (rsvp) ->
 
-  rsvp = require('./lib/rsvp.amd')
+  # NOTE: rsvp must be set as a path in requirejs_config like this:
+  #
+  # rsvp: 'path/to/flux/lib/rsvp.amd.js'
 
   Promise = rsvp.Promise
 
