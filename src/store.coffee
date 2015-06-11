@@ -1,48 +1,48 @@
-define ['./lib/EventEmitter'], (EventEmitter) ->
+EventEmitter = require('event-emitter')
 
-  class Store
-    constructor: ->
-      @events = {}
+module.exports = class Store
+  constructor: ->
+    @events = {}
 
-    emitChange: ->
-      @fireEvent('change')
+  emitChange: ->
+    @fireEvent('change')
 
-    addChangeListener: (callback) ->
-      @on('change', callback)
+  addChangeListener: (callback) ->
+    @on('change', callback)
 
-    removeChangeListener: (callback) ->
-      @removeListener('change', callback)
+  removeChangeListener: (callback) ->
+    @removeListener('change', callback)
 
-    load: ->
-      @collection.fetch().then(=> @emitChange())
+  load: ->
+    @collection.fetch().then(=> @emitChange())
 
-    getState: ->
-      @collection.toJSON()
+  getState: ->
+    @collection.toJSON()
 
-    fireEvent: (event, args...) ->
-      return false unless @events[event]
-      listener args... for listener in @events[event]
-      return true
+  fireEvent: (event, args...) ->
+    return false unless @events[event]
+    listener args... for listener in @events[event]
+    return true
 
-    addEvent: (event, listener) ->
-      @fireEvent 'newListener', event, listener
-      (@events[event]?=[]).push listener
-      return @
+  addEvent: (event, listener) ->
+    @fireEvent 'newListener', event, listener
+    (@events[event]?=[]).push listener
+    return @
 
-    on: @::addEvent
+  on: @::addEvent
 
-    once: (event, listener) ->
-      fn = =>
-        @removeListener event, fn
-        listener arguments...
-      @on event, fn
-      return @
+  once: (event, listener) ->
+    fn = =>
+      @removeListener event, fn
+      listener arguments...
+    @on event, fn
+    return @
 
-    removeListener: (event, listener) ->
-      return @ unless @events[event]
-      @events[event] = (l for l in @events[event] when l isnt listener)
-      return @
+  removeListener: (event, listener) ->
+    return @ unless @events[event]
+    @events[event] = (l for l in @events[event] when l isnt listener)
+    return @
 
-    removeAllListeners: (event) ->
-      delete @events[event]
+  removeAllListeners: (event) ->
+    delete @events[event]
 

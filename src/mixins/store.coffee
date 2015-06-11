@@ -1,27 +1,28 @@
-define ['underscore', '../dispatcher'], (_, Dispatcher) ->
+_ = require('underscore')
+Dispatcher = require('../dispatcher')
 
-  StoreMixin = {
-    _setUpStores: ->
-      @_storeMap = {}
-      @_listeners = {}
-      @stores.forEach (store) =>
-        unless Dispatcher.isRegistered(store)
-          Dispatcher.registerStore(store)
+module.exports = StoreMixin = {
+  _setUpStores: ->
+    @_storeMap = {}
+    @_listeners = {}
+    @stores.forEach (store) =>
+      unless Dispatcher.isRegistered(store)
+        Dispatcher.registerStore(store)
 
-        listener =  =>
-          state = {}
-          state[store.storeName] = store.getState()
-          @setState(state)
+      listener =  =>
+        state = {}
+        state[store.storeName] = store.getState()
+        @setState(state)
 
-        @_listeners[store.storeName] = listener
-        store.addChangeListener(listener)
-        @_storeMap[store.storeName] = store
+      @_listeners[store.storeName] = listener
+      store.addChangeListener(listener)
+      @_storeMap[store.storeName] = store
 
-    getInitialState: ->
-      @_setUpStores()
-      _.object(_.map(@_storeMap, (store, name) -> [name, store.getState()]))
+  getInitialState: ->
+    @_setUpStores()
+    _.object(_.map(@_storeMap, (store, name) -> [name, store.getState()]))
 
-    componentWillUnmount: ->
-      @stores.forEach (store) =>
-        store.removeChangeListener(@_listeners[store.storeName])
-  }
+  componentWillUnmount: ->
+    @stores.forEach (store) =>
+      store.removeChangeListener(@_listeners[store.storeName])
+}
