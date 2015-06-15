@@ -175,8 +175,6 @@ module.exports = Dispatcher = (function() {
     window.Dispatcher = new Dispatcher();
   }
 
-  new Dispatcher();
-
-  return Dispatcher;
+  return new Dispatcher();
 
 })();
