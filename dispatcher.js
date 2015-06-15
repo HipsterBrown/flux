@@ -171,12 +171,12 @@ module.exports = Dispatcher = (function() {
     });
   };
 
+  if (window.Dispatcher == null) {
+    window.Dispatcher = new Dispatcher();
+  }
+
+  new Dispatcher();
+
   return Dispatcher;
 
 })();
-
-if (window.Dispatcher == null) {
-  window.Dispatcher = new Dispatcher();
-}
-
-window.Dispatcher;

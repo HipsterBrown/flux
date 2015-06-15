@@ -121,5 +121,5 @@ module.exports = class Dispatcher
     )["catch"] (err) ->
       callback err
 
-window.Dispatcher ?= new Dispatcher()
-window.Dispatcher
+  window.Dispatcher ?= new Dispatcher()
+  new Dispatcher()
